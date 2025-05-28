@@ -9,13 +9,14 @@ QRCode.toCanvas(document.getElementById('qr-code'), linkDoSite, function (error)
 
 // Carrossel
 let index = 0;
-const fotos = document.querySelectorAll('.carrossel img');
+const imagens = document.querySelectorAll(".carrossel img");
 
 setInterval(() => {
-  fotos[index].classList.remove('active');
-  index = (index + 1) % fotos.length;
-  fotos[index].classList.add('active');
-}, 3000);
+  imagens[index].classList.remove("active");
+  index = (index + 1) % imagens.length;
+  imagens[index].classList.add("active");
+}, 3000); // Troca a cada 3 segundos
+
 
 // Digitação da mensagem
 const mensagem = "Você é minha pessoa favorita no mundo. Te amo para sempre!";
@@ -31,24 +32,45 @@ digitar();
 
 // Corações flutuando
 function criarCoracao() {
-  const coracao = document.createElement('div');
-  coracao.classList.add('heart');
-  coracao.style.left = Math.random() * 100 + "vw";
-  coracao.style.animationDuration = Math.random() * 5 + 5 + "s";
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = Math.random() * 5 + 5 + "s";
+  document.querySelector(".hearts").appendChild(heart);
 
-  // em dispositivos móveis, reduz a quantidade
-  const isMobile = window.innerWidth < 600;
-  if (!isMobile || Math.random() < 0.4) {
-    document.querySelector('.hearts').appendChild(coracao);
-    setTimeout(() => coracao.remove(), 10000);
-  }
+  setTimeout(() => {
+    heart.remove();
+  }, 10000);
 }
 
-setInterval(criarCoracao, 300);
+setInterval(criarCoracao, 500); // Só esta linha!
+
 
 
 function mostrarMensagem() {
-  const div = document.getElementById('mensagem-secreta');
-  div.classList.remove('escondida');
-  div.classList.add('mostrar');
+  const mensagem = document.getElementById("mensagem-secreta");
+  const carrossel = document.getElementById("carrossel");
+
+  mensagem.classList.remove("escondida");
+  mensagem.classList.add("mostrar");
+
+  carrossel.classList.remove("escondida");
+
+  iniciarCarrossel();
 }
+
+function iniciarCarrossel() {
+  const imagens = document.querySelectorAll(".carrossel img");
+  let index = 0;
+
+  // Ativa a primeira imagem apenas agora
+  imagens[index].classList.add("active");
+
+  setInterval(() => {
+    imagens[index].classList.remove("active");
+    index = (index + 1) % imagens.length;
+    imagens[index].classList.add("active");
+  }, 3000);
+}
+
+

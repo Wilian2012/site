@@ -46,7 +46,7 @@ canvas {
   height: 100%;
   pointer-events: none;
   overflow: hidden;
-  z-index: 0;
+  z-index: 1;
 }
 
 .heart {
@@ -57,6 +57,7 @@ canvas {
   background-size: contain;
   animation: subir 10s linear infinite;
   opacity: 0.6;
+  z-index: 1;
 }
 
 @keyframes subir {
@@ -69,6 +70,8 @@ canvas {
     opacity: 0;
   }
 }
+
+
 
 .botao-surpresa {
   margin-top: 2rem;
@@ -134,4 +137,32 @@ canvas {
     padding: 0.8rem 1.5rem;
   }
 }
+.escondida {
+  display: none;
+}
+.carrossel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
 
+.carrossel img {
+  display: none;
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  object-fit: cover;
+  transition: opacity 0.5s ease;
+}
+
+.carrossel img.active {
+  display: block;
+}

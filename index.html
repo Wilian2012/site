@@ -17,15 +17,18 @@
   <div class="container">
     <h1>Feliz Dia dos Namorados 💘</h1>
 
-    <p class="mensagem" id="mensagem"></p>
+    <!-- Botão que ativa tudo -->
+    <button class="botao-surpresa" onclick="mostrarMensagem()">Clique aqui para uma surpresa 💌</button>
 
-    <div class="carrossel">
-      <button class="botao-surpresa" onclick="mostrarMensagem()">Clique aqui para uma surpresa 💌</button>
+    <!-- Mensagem e carrossel escondidos -->
+    <div id="mensagem-secreta" class="mensagem-secreta escondida">
+      <p>Você é meu mundo. Cada momento contigo é um presente. 🌹</p>
+    </div>
 
-      <div id="mensagem-secreta" class="mensagem-secreta escondida">
-  <p>Você é meu mundo. Cada momento contigo é um presente. 🌹</p>
-      <img src="assepts/foto1.jpg" alt="foto 1" class="active" />
-      <img src="assepts/foto2.jpg" alt="foto 2" />
+    <div class="carrossel escondida" id="carrossel">
+      <img src="assets/foto1.jpg" alt="Foto 1" />
+      <img src="assets/foto2.jpg" alt="Foto 2" />
+      <!-- Adicione mais imagens aqui -->
     </div>
   </div>
 
