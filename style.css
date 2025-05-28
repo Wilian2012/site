@@ -38,3 +38,100 @@ audio {
 canvas {
   margin-top: 30px;
 }
+.hearts {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: url('assets/coracao.png') no-repeat center;
+  background-size: contain;
+  animation: subir 10s linear infinite;
+  opacity: 0.6;
+}
+
+@keyframes subir {
+  0% {
+    transform: translateY(100vh) scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-10vh) scale(1.5);
+    opacity: 0;
+  }
+}
+
+.botao-surpresa {
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  background-color: #d63384;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  z-index: 2;
+  position: relative;
+}
+
+.botao-surpresa:hover {
+  background-color: #b0226b;
+}
+
+.mensagem-secreta {
+  margin-top: 1.5rem;
+  font-size: 1.4rem;
+  color: #d63384;
+  background: #fff0f5;
+  padding: 1rem;
+  border-radius: 15px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  transition: all 0.4s ease;
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.mensagem-secreta.mostrar {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.escondida {
+  display: none;
+}
+
+/* Responsivo */
+@media screen and (max-width: 600px) {
+  .carrossel {
+    width: 90%;
+    height: 300px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .mensagem {
+    font-size: 1.2rem;
+  }
+
+  .mensagem-secreta {
+    font-size: 1.2rem;
+  }
+
+  .botao-surpresa {
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+  }
+}
+
