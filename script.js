@@ -21,7 +21,7 @@ mensagemElemento.classList.add("mensagem-romantica");
 mensagemElemento.style.display = "none"; // começa invisível
 document.querySelector(".container").appendChild(mensagemElemento);
 
-const mensagemFinal = "Desculpa não poder te dar um presente top, mas saiba que fiz esse pequeno site como demonstração do amor que sinto por você. Te amo muito! O melhor presente do mundo eu já tenho, que é você.";
+const mensagemFinal = "Todas essas fotos foi tirada em algum momento especial que passamos juntos, são tantas fotos, tantos momentos que se fosse colocar todos iria virar um album gigante, bom, quero pedir desculpa não poder te dar um presente top, mas saiba que fiz esse pequeno site/página como demonstração do amor que sinto por você. Te amo muito! O melhor presente do mundo eu já tenho, que é você.";
 
 function atualizarCarrossel() {
   // Se for a última imagem, mostrar mensagem final
