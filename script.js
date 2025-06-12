@@ -1,29 +1,90 @@
-// Coloque aqui o link do seu site final (após publicar)
-const linkDoSite = "https://seusite.com"; // temporariamente pode usar "http://localhost"
-
-QRious = window.QRCode;
-QRCode.toCanvas(document.getElementById('qr-code'), linkDoSite, function (error) {
-  if (error) console.error(error);
-  console.log('QR code gerado!');
-});
-
-// Carrossel
-let index = 0;
 const imagens = document.querySelectorAll(".carrossel img");
+const mensagensRomanticas = [
+  "Você é a razão do meu sorriso diário. 💖",
+  "Cada momento contigo é único. 🌹",
+  "Meu amor por você só cresce. 💕",
+  "Contigo o mundo fica mais bonito. 🌸",
+  "Você ilumina meus dias. ☀️",
+  "Te amar é minha melhor escolha. 💘",
+  "Nosso amor é infinito. 🔗",
+  "Você é meu sonho realizado. ✨",
+  "Ao seu lado sou completo. 🥰",
+  "Você é tudo para mim. 💓",
+  "Com você, tudo faz sentido. 💌",
+  "Para sempre nós. 💍"
+];
 
-setInterval(() => {
-  imagens[index].classList.remove("active");
-  index = (index + 1) % imagens.length;
+let index = 0;
+
+const mensagemElemento = document.createElement("p");
+mensagemElemento.classList.add("mensagem-romantica");
+mensagemElemento.style.display = "none"; // começa invisível
+document.querySelector(".container").appendChild(mensagemElemento);
+
+const mensagemFinal = "Desculpa não poder te dar um presente top, mas saiba que fiz esse pequeno site como demonstração do amor que sinto por você. Te amo muito! O melhor presente do mundo eu já tenho, que é você.";
+
+function atualizarCarrossel() {
+  // Se for a última imagem, mostrar mensagem final
+  if (index === imagens.length) {
+    document.querySelector(".carrossel").style.display = "none"; // Esconde carrossel
+    mensagemElemento.textContent = mensagemFinal;
+    mensagemElemento.style.display = "block"; // Mostra mensagem final
+    return; // Para o carrossel
+  }
+
+  imagens.forEach(img => img.classList.remove("active"));
   imagens[index].classList.add("active");
-}, 3000); // Troca a cada 3 segundos
+
+  mensagemElemento.textContent = mensagensRomanticas[index % mensagensRomanticas.length];
+  mensagemElemento.style.display = "block"; // Garante que vai aparecer
+
+  index++;
+}
+
+function iniciarCarrossel() {
+  atualizarCarrossel(); // Primeira imagem e mensagem
+  setInterval(() => {
+    atualizarCarrossel();
+  }, 10000);
+}
 
 
-// Digitação da mensagem
-const mensagem = "Você é minha pessoa favorita no mundo. Te amo para sempre!";
+const audio = document.getElementById("audioPlayer");
+const botaoPlayer = document.getElementById("botaoPlayer");
+
+function toggleMusica() {
+  if (audio.paused) {
+    audio.play();
+    botaoPlayer.textContent = "⏸️ Pausar";
+  } else {
+    audio.pause();
+    botaoPlayer.textContent = "🔊 Aumente o volume";
+  }
+}
+
+function mostrarMensagem() {
+  const mensagem = document.getElementById("mensagem-secreta");
+  const carrossel = document.getElementById("carrossel");
+  const botao = document.querySelector(".botao-surpresa");
+
+  mensagem.classList.remove("escondida");
+  mensagem.classList.add("mostrar");
+
+  carrossel.classList.remove("escondida");
+
+  botao.style.display = "none";
+
+  // Mostra o botão player
+  botaoPlayer.classList.remove("escondida");
+  iniciarCarrossel();
+}
+
+// Digitação da mensagem inicial (vazia neste caso)
+const mensagemInicial = "";
 let i = 0;
 function digitar() {
-  if (i < mensagem.length) {
-    document.getElementById("mensagem").innerHTML += mensagem.charAt(i);
+  if (i < mensagemInicial.length) {
+    document.getElementById("mensagem-secreta").innerHTML += mensagemInicial.charAt(i);
     i++;
     setTimeout(digitar, 60);
   }
@@ -42,35 +103,4 @@ function criarCoracao() {
     heart.remove();
   }, 10000);
 }
-
-setInterval(criarCoracao, 500); // Só esta linha!
-
-
-
-function mostrarMensagem() {
-  const mensagem = document.getElementById("mensagem-secreta");
-  const carrossel = document.getElementById("carrossel");
-
-  mensagem.classList.remove("escondida");
-  mensagem.classList.add("mostrar");
-
-  carrossel.classList.remove("escondida");
-
-  iniciarCarrossel();
-}
-
-function iniciarCarrossel() {
-  const imagens = document.querySelectorAll(".carrossel img");
-  let index = 0;
-
-  // Ativa a primeira imagem apenas agora
-  imagens[index].classList.add("active");
-
-  setInterval(() => {
-    imagens[index].classList.remove("active");
-    index = (index + 1) % imagens.length;
-    imagens[index].classList.add("active");
-  }, 3000);
-}
-
-
+setInterval(criarCoracao, 500);

@@ -5,6 +5,7 @@ body {
   padding: 20px;
   color: #333;
   text-align: center;
+  overflow-x: hidden; /* Evita rolagem horizontal no celular */
 }
 
 .container {
@@ -17,20 +18,6 @@ h1 {
   margin-bottom: 10px;
 }
 
-.gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  margin: 20px 0;
-}
-
-.gallery img {
-  width: 200px;
-  border-radius: 10px;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-}
-
 audio {
   margin-top: 20px;
 }
@@ -38,6 +25,7 @@ audio {
 canvas {
   margin-top: 30px;
 }
+
 .hearts {
   position: fixed;
   top: 0;
@@ -61,17 +49,9 @@ canvas {
 }
 
 @keyframes subir {
-  0% {
-    transform: translateY(100vh) scale(1);
-    opacity: 0.6;
-  }
-  100% {
-    transform: translateY(-10vh) scale(1.5);
-    opacity: 0;
-  }
+  0% { transform: translateY(100vh) scale(1); opacity: 0.6; }
+  100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
 }
-
-
 
 .botao-surpresa {
   margin-top: 2rem;
@@ -91,17 +71,22 @@ canvas {
   background-color: #b0226b;
 }
 
-.mensagem-secreta {
-  margin-top: 1.5rem;
-  font-size: 1.4rem;
-  color: #d63384;
-  background: #fff0f5;
-  padding: 1rem;
-  border-radius: 15px;
-  box-shadow: 0 0 8px rgba(0,0,0,0.1);
-  transition: all 0.4s ease;
-  opacity: 0;
-  transform: scale(0.9);
+.botao-player {
+  margin-top: 1rem;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  z-index: 2;
+  position: relative;
+}
+
+.botao-player:hover {
+  background-color: #1e7e34;
 }
 
 .mensagem-secreta.mostrar {
@@ -113,33 +98,6 @@ canvas {
   display: none;
 }
 
-/* Responsivo */
-@media screen and (max-width: 600px) {
-  .carrossel {
-    width: 90%;
-    height: 300px;
-  }
-
-  h1 {
-    font-size: 1.8rem;
-  }
-
-  .mensagem {
-    font-size: 1.2rem;
-  }
-
-  .mensagem-secreta {
-    font-size: 1.2rem;
-  }
-
-  .botao-surpresa {
-    font-size: 1rem;
-    padding: 0.8rem 1.5rem;
-  }
-}
-.escondida {
-  display: none;
-}
 .carrossel {
   display: flex;
   justify-content: center;
@@ -165,4 +123,54 @@ canvas {
 
 .carrossel img.active {
   display: block;
+}
+
+.mensagem-romantica {
+  font-size: 1.2rem;
+  color: #b22260;
+  margin-top: 1rem;
+  background: #fff0f5;
+  padding: 0.8rem;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  transition: all 0.5s ease;
+}
+
+/* Responsivo para celular */
+@media screen and (max-width: 600px) {
+  .container {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .botao-surpresa,
+  .botao-player {
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+    width: 90%;
+    max-width: 300px;
+  }
+
+  .carrossel {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .carrossel img {
+    max-height: 300px;
+    border-radius: 15px;
+  }
+
+  .mensagem-romantica {
+    font-size: 1rem;
+    padding: 0.6rem;
+  }
+
+  .mensagem-secreta {
+    font-size: 1rem;
+  }
 }

@@ -7,28 +7,36 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <audio autoplay loop>
-    <source src="assets/musica.mp3" type="audio/mpeg" />
-    Seu navegador não suporta áudio.
-  </audio>
+  <audio id="audioPlayer" loop>
+  <source src="assets/musica.mp4" type="audio/mpeg" />
+  Seu navegador não suporta áudio.
+</audio>
 
   <div class="hearts"></div>
 
   <div class="container">
     <h1>Feliz Dia dos Namorados 💘</h1>
 
-    <!-- Botão que ativa tudo -->
     <button class="botao-surpresa" onclick="mostrarMensagem()">Clique aqui para uma surpresa 💌</button>
 
-    <!-- Mensagem e carrossel escondidos -->
-    <div id="mensagem-secreta" class="mensagem-secreta escondida">
-      <p>Você é meu mundo. Cada momento contigo é um presente. 🌹</p>
-    </div>
+   <div id="mensagem-secreta" class="mensagem-secreta escondida"></div>
+
+   <!-- Botão Player escondido inicialmente -->
+  <button id="botaoPlayer" class="botao-player escondida" onclick="toggleMusica()">🔊 Aumente o volume</button>
 
     <div class="carrossel escondida" id="carrossel">
       <img src="assets/foto1.jpg" alt="Foto 1" />
       <img src="assets/foto2.jpg" alt="Foto 2" />
-      <!-- Adicione mais imagens aqui -->
+      <img src="assets/foto3.jpeg" alt="Foto 3" />
+      <img src="assets/foto4.jpeg" alt="Foto 4" />
+      <img src="assets/foto5.jpeg" alt="Foto 5" />
+      <img src="assets/foto6.jpeg" alt="Foto 6" />
+      <img src="assets/foto7.jpeg" alt="Foto 7" />
+      <img src="assets/foto8.jpeg" alt="Foto 8" />
+      <img src="assets/foto9.jpeg" alt="Foto 9" />
+      <img src="assets/foto10.jpeg" alt="Foto 10" />
+      <img src="assets/foto11.jpeg" alt="Foto 11" />
+      <img src="assets/foto12.jpeg" alt="Foto 12" />
     </div>
   </div>
 
